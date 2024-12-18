@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        background-color: #071952;
+    }
+    .box{
+        display: block;
+        position: relative;
+        height: 80%;
+        width: 100%;
+        margin-left: 50%;
+        background-color: F0EDCF;
+    }
+    .block{
+        display: flex;
+        padding-left: 40px;
+        padding-right: 40px;
+        border-radius: 20px;
+        top: 10%;
+        margin-left: 80px;
+        -ms-transform: translateY(40%);
+        transform: translateY(40%);
+        flex-direction: column;
+        width: 40%;
+        height: 53%;
+        left: 30vh;
+        background-color: #071952;
+        justify-content: center;
+        align-items:flex-start;
+        align-content: center;
+        position: absolute;
+    }
+    .button{
+        width: 100px;
+        align-self: stretch;
+        border-radius: 20px;
+        background-color: rgba(0, 0, 0, 0);
+        border-color: white;
+        font-family: "Inter", sans-serif;
+    }
+    .title{
+        align-self: center;
+        font-family: "Inter", sans-serif;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+        font-size: 40px;
+    }
+    .user{
+      background-color: rgba(0, 0, 0, 0);
+      color: white;
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      text-align: right;
+      margin-right: 20px;
+    }
+    a{
+      font-family: "Inter", sans-serif;
+      text-decoration: none;
+    }
+    a:link {
+    text-decoration: none;
+    }
+    a:hover {
+    font-weight: bold;
+    text-decoration: none;
+    }
+
+    a:visited {
+    text-decoration: none;
+    }
+    a:active {
+    text-decoration: none;
+    }
+    div ul li a:hover{
+    background-color: #06283D;
+    color: white;
+    }
+    ul li a{
+      padding:12px;
+      height: 100%;
+      width: 100%;
+    }
+    .Menugrid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      height: 6vh;
+      align-items:center;
+      background-color: #030874;
+      align-content: space-between;
+    }
+    .gridbody{
+      display: grid;
+      grid-template-columns: 1fr 8fr 2fr 1fr;
+      grid-template-rows: 1fr;
+      height: 98vh;
+      align-items:center;
+      align-content: space-between;
+    }
+    .listmenu{
+      height: 50px;
+      font-size: 19px;
+      position: relative;
+      background-color: #0096FF;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.393);
+
+    }
+    .listmenua{
+    position: absolute;
+    color: white;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    }
+    .listmenub{
+    position: absolute;
+    color: white;
+    top: 35%;
+    height: 100%;
+    width: 100%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    }
+    .listmenua:hover{
+    font-weight: bold;
+    color: white;
+    }
+    .blogcontent{
+      display:flex;
+      flex-direction:column; 
+      height: 200px;
+    }
+
+
+  .collapsible {
+  background-color: #06283D;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #47B5FF;
+  color:black;
+}
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  flex-direction: column;
+  display: none;
+  overflow: hidden;
+  background-color: #06283D;
+}
+
+div ol li a:hover{
+    background-color: #47B5FF;
+    color: white;
+}
+ol li a{
+      padding:12px;
+      height: 100%;
+      width: 100%;
+}
+ol li{
+  list-style: none;
+  color:white;
+  height: 40px;
+  position: relative;
+}
+ol{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding:0;
+}
+</style>
+<body>
+  <header>
+    <div class="Menugrid">
+      <div style="display: flex;align-items: center;">
+        <div><a href="/blog.com?user=<%=user %>"><img src="./images/icon.svg" style="height: 40px; width: 40px; filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(122deg) brightness(103%) contrast(102%);"></a></div>
+        <div style="width: 200px;color:white;"><a style="color:white;" href="/blog.com?user=<%=user %>">Blog App</a></div>
+      </div>
+      <div class="user">
+        <div >Welcome, <%=user %></div>
+      </div>
+    </div>
+  </header>
+<div class="gridbody">
+
+  <div ></div>
+  <div style="background-color: #EBF4F6;align-self: stretch;">
+    <div style="display: flex;flex-direction: column;padding-left:60px;padding-right: 60px;padding-top:20px">
+      <div style="height: 20px;"></div>
+      <%-blog %>
+    </div>
+  </div>
+  <div style="background-color: #0096FF; align-self: stretch;">
+    <div style="display: flex;flex-direction: column;">
+      <ul style="display: flex; flex-direction: column; list-style: none;padding:0;">
+        <li class="listmenu"><a class="listmenua" href="/login">Home</a></li>
+        <li class="listmenu"><a class="listmenua" href="/create">Create blog</a></li>
+        <li class="listmenu"><a class="listmenua" href="/editdelete">Edit blog</a></li>
+        <li class="listmenu"><a class="listmenua" href="/editdelete">Delete blog</a></li>
+        <li class="listmenu"><a class="listmenua" href="/openblog">Read blog</a></li>
+      </ul>
+    </div>
+    <div>
+      
+      <% var i=0; %>
+      <% fileLists.forEach(row => {%>
+        <% i++; %>
+        <button type="button" class="collapsible">user<%=i %></button>
+        <div class="content">
+          <ol>
+          <% row.forEach(element => {%>
+          <li><a class="listmenub" href="/openblog?filename=<%= element %>"><%= element %></a></li>
+          <%}); %>
+          </ol>
+        </div>
+      <% }); %>
+    </div>
+    <!--
+    <div>
+      <button type="button" class="collapsible">User1</button>
+      <div class="content">
+        <ol>
+        <li><a class="listmenub" href="#">Lorem ipsum...</a></li>
+        <li><a class="listmenub" href="#">Lorem ipsum...</a></li>
+        <li><a class="listmenub" href="#">Lorem ipsum...</a></li>
+        <li><a class="listmenub" href="#">Lorem ipsum...</a></li>
+        </ol>
+      </div>
+    </div>
+    -->
+
+
+  </div>
+  
+  <div></div>
+
+</div>
+
+<footer style="position: fixed;left:0; bottom:0;margin-bottom: 20px;"></footer>
+<script>
+  
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+    body{
+        background-image: linear-gradient(to right, #3572EF 20%, #3572EF  31%, #1A2980  100%, #1A2980  10%);
+        background-color: #3572EF;
+    }
+    .box{
+        display: block;
+        position: relative;
+        height: 80%;
+        width: 100%;
+        margin-left: 50%;
+        background-color: F0EDCF;
+    }
+    .block{
+        display: flex;
+        padding-left: 40px;
+        padding-right: 40px;
+        border-radius: 20px;
+        top: 10%;
+        margin-left: 80px;
+        -ms-transform: translateY(40%);
+        transform: translateY(40%);
+        flex-direction: column;
+        width: 40%;
+        height: 53%;
+        left: 30vh;
+        background-color: #4329996d;
+        justify-content: center;
+        align-items:flex-start;
+        align-content: center;
+        position: absolute;
+    }
+    .button{
+        width: 100px;
+        align-self: stretch;
+        border-radius: 20px;
+        background-color: rgba(0, 0, 0, 0);
+        border-color: white;
+        font-family: "Inter", sans-serif;
+    }
+    .title{
+        align-self: center;
+        font-family: "Inter", sans-serif;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+        font-size: 40px;
+    }
+    .menu{
+      display: flex;
+      margin-right: 10px;
+      gap:5px;
+      background-color: rgba(0, 0, 0, 0);
+      justify-content: end;
+      align-content: center;
+      align-items: center;
+    }
+    .menufooter{
+      display: flex;
+      list-style: none;
+      margin-left: 40px;
+      gap:50px;
+      background-color: rgba(0, 0, 0, 0);
+      justify-content: start;
+      align-content: flex-end;
+      align-items: flex-end;
+    }
+    .menuitems{
+      width: 100px;
+      align-self: center;
+    }
+    a{
+      color:white;
+      font-family: "Inter", sans-serif;
+      text-decoration: none;
+    }
+    a:link {
+    text-decoration: none;
+    }
+
+    a:visited {
+    text-decoration: none;
+    }
+
+    a:hover {
+    color:#A7E6FF;
+    text-decoration: none;
+    }
+
+    a:active {
+    text-decoration: none;
+    }
+    .Menugrid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      height: 100px;
+      margin-top: 40px;
+      align-items: center;
+    }
+</style>
+<body>
+  <header>
+    <div class="Menugrid">
+    <div style="width: 10%; height: 100px; margin-left: 20px;">
+      <div style="display: flex;align-items: center;">
+        <div><a href="/blog.com"><img src="icon.svg" style="height: 40px; width: 40px; filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(122deg) brightness(103%) contrast(102%);"></a></div>
+        <div><a href="/blog.com">Blog App</a></div>
+      </div>
+    </div>
+    <div style="width: 90%; height: 100px;">
+      <div class="menu">
+        <div class="menuitems"><a href="/blog.com">Home</a></div>
+        <div class="menuitems"><a href="/about">About</a></div>
+        <div class="menuitems"><a href="/contact">contact</a></div>
+        <div class="menuitems"><button class="button btn btn-primary">Button</button></div>
+      </div>
+    </div>
+  </div>
+  </header>
+
+  <form action="/login" method="post">
+    <div class="block">
+      <div class="title">Welcome to Blog page.</div>
+      <div style="color: white; text-align: justify;">This is a simple blog App created using NodeJS, Express, EJS, HTML, CSS & Javascript.</div>
+      <div class="input-group mb-3" style="margin-top:40px;">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">📧</span>
+        </div>
+        <input type="text" class="form-control" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div style="align-self: flex-end;"><input id="btnsubmit" class="button btn btn-primary" type="submit" title="Submit" value="Sign-in" ></div>
+    </div>
+  </form>
+<footer style="position: fixed;left:0; bottom:0;margin-bottom: 20px;"></footer>
+</body>
+</html>
