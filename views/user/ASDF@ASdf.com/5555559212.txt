@@ -1,0 +1,18 @@
+
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file);

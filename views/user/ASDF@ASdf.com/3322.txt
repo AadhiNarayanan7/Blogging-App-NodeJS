@@ -1,18 +1,3 @@
-hhjhjjhjjhjhj
-W3School
-https://www.w3schools.com/tags/tag_pre.asp
-HTML (pre> Tag - W3Schools
-The (pre> tag defines preformatted text. Text in a (pre> element is displayed in a fixed-width font, and the text preserves both spaces and line breaks. The text will be displayed exactly as written in the HTML source code.
-
-Tags:Html Pre TagPreformatted TextHtml Pre and Code TagsHtml Pre Example
- 
-Global web icon
-Stack Overflow
-https://stackoverflow.com/questions/1138…
-Explore this image
-html - How to show (div> tag literally in (code>/(pre> …
-Is there any way to show "(div>" inside of (pre> or (code> tag without actually interpreting it as HTML? If you want to render a ( character then use &lt; , with &gt; for > and &amp; for & . You can't (in modern HTML) write markup and have …
-
 How to get the contents of a pre tag with JavaScript?
 Oct 29, 2016
 How to display raw HTML code in PRE or something like it but without ...
@@ -20,20 +5,28 @@ May 27, 2013
 See more results
 Tags:HTMLHow-to
 Global web icon
-Mozilla DeveloperGlobal web icon
-W3School
-https://www.w3schools.com/tags/tag_pre.asp
-HTML (pre> Tag - W3Schools
-The (pre> tag defines preformatted text. Text in a (pre> element is displayed in a fixed-width font, and the text preserves both spaces and line breaks. The text will be displayed exactly as written in the HTML source code.
-
-Tags:Html Pre TagPreformatted TextHtml Pre and Code TagsHtml Pre Example
- 
+Mozilla DeveloperHow to get the contents of a pre tag with JavaScript?
+Oct 29, 2016
+How to display raw HTML code in PRE or something like it but without ...
+May 27, 2013
+See more results
+Tags:HTMLHow-to
 Global web icon
-Stack Overflow
-https://stackoverflow.com/questions/1138…
-Explore this image
-html - How to show (div> tag literally in (code>/(pre> …
-Is there any way to show "(div>" inside of (pre> or (code> tag without actually interpreting it as HTML? If you want to render a ( character then use &lt; , with &gt; for > and &amp; for & . You can't (in modern HTML) write markup and have …
+Mozilla DeveloperHow to get the contents of a pre tag with JavaScript?
+Oct 29, 2016
+How to display raw HTML code in PRE or something like it but without ...
+May 27, 2013
+See more results
+Tags:HTMLHow-to
+Global web icon
+Mozilla DeveloperHow to get the contents of a pre tag with JavaScript?
+Oct 29, 2016
+How to display raw HTML code in PRE or something like it but without ...
+May 27, 2013
+See more results
+Tags:HTMLHow-to
+Global web icon
+Mozilla Developer
 
 How to get the contents of a pre tag with JavaScript?
 Oct 29, 2016

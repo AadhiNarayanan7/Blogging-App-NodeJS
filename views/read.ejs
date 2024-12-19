@@ -240,7 +240,7 @@ ol{
         <div class="content">
           <ol>
           <% row.forEach(element => {%>
-          <li><a class="listmenub" href="/openblog?filename=<%= element %>"><%= element %></a></li>
+          <li><a class="listmenub" href="/openblog?filename=<%= element %>&user=<%=(i-1) %>"><%= element %></a></li>
           <%}); %>
           </ol>
         </div>

@@ -4,6 +4,7 @@ import { fileURLToPath } from "url";
 import fs, { copyFileSync } from "fs";
 import cookieParser from "cookie-parser";
 import { arrayBuffer } from "stream/consumers";
+import multer, { diskStorage } from "multer";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const port=5000;
@@ -13,14 +14,30 @@ server.use(cookieParser());
 server.use(express.static("public"));
 server.use(express.urlencoded({extended: true}));
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './views/user/')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname)
+    }
+  })
+  
+  const upload = multer({ storage: storage })
+
 server.listen(port,()=>{
     console.log("listening on port.");
 });
+
 server.post("/login",(req,res)=>{
     res.cookie("user",req.body.emailid)
     var blogcontent="";
     if(!fs.existsSync("./views/user/"+req.body.emailid)) {
         fs.mkdirSync("./views/user/"+req.body.emailid);
+        res.render("login.ejs",{user: req.body.emailid, blog: blogcontent});
+    }
+    if(!fs.existsSync("./public/images/"+req.body.emailid)) {
+        fs.mkdirSync("./public/images/"+req.body.emailid);
         res.render("login.ejs",{user: req.body.emailid, blog: blogcontent});
     }
     else{
@@ -81,20 +98,33 @@ server.get("/create",(req,res)=>{
     res.render("create.ejs",req.cookies);
 })
 
-server.post("/save",(req,res)=>{
-    
-    if(fs.existsSync("./views/user/"+req.body.user+"/"+req.body.title+".txt")){
-        fs.readdi
-        const files =fs.readdirSync("./views/user/"+req.body.user);
-
-        //console.log("./views/user/"+req.body.user+"/"+req.body.title+files.length+Math.floor(Math.random()*1000));
-        fs.writeFileSync("./views/user/"+req.body.user+"/"+req.body.title+files.length+Math.floor(Math.random()*1000)+".txt",req.body.content.replaceAll("<","("));
+server.post("/save",upload.single("image"),(req,res,next)=>{
+    if(fs.existsSync("./views/user/"+req.cookies.user+"/"+req.body.title+".txt")){
+        const files =fs.readdirSync("./views/user/"+req.cookies.user);
+        var rnd=Math.floor(Math.random()*1000);
+        if(fs.existsSync("./views/user/image")){
+            if(fs.existsSync("./public/images/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg"))
+                fs.rmSync("./public/images/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg");
+            fs.copyFileSync("./views/user/image","./public/images/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg");
+            fs.rmSync("./views/user/image");
+        }
+        //fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".jpg",req.file.buffer);
+        //console.log("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+Math.floor(Math.random()*1000));
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+files.length+rnd+".txt",req.body.content.replaceAll("<","("));
     }
     else{  
-        fs.writeFileSync("./views/user/"+req.body.user+"/"+req.body.title+".txt",req.body.content.replaceAll("<","("));
+        
+        if(fs.existsSync("./views/user/image")){
+            if(fs.existsSync("./public/images/"+req.cookies.user+"/"+req.body.title+".jpg"))
+                fs.rmSync("./public/images/"+req.cookies.user+"/"+req.body.title+".jpg");
+            fs.copyFileSync("./views/user/image","./public/images/"+req.cookies.user+"/"+req.body.title+".jpg");
+            fs.rmSync("./views/user/image");
+        }
+        //fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+".jpg",req.file.buffer);
+        fs.writeFileSync("./views/user/"+req.cookies.user+"/"+req.body.title+".txt",req.body.content.replaceAll("<","("));
     }
     
-    res.render("create.ejs",{user: req.body.user, isuploaded:true});
+    res.render("create.ejs",{user: req.cookies.user, isuploaded:true});
 
 })
 
@@ -146,7 +176,14 @@ server.get("/deleteblog",(req,res)=>{
     res.render("login.ejs",{user: req.cookies.user, blog: blogcontent});
 });
 
-server.post("/editsave",(req,res)=>{
+server.post("/editsave",upload.single("image"),(req,res)=>{
+
+    if(fs.existsSync("./views/user/image")){
+        if(fs.existsSync("./public/images/"+req.cookies.user+"/"+req.body.title+".jpg"))
+            fs.rmSync("./public/images/"+req.cookies.user+"/"+req.body.title+".jpg");
+        fs.copyFileSync("./views/user/image","./public/images/"+req.cookies.user+"/"+req.body.title+".jpg");
+        fs.rmSync("./views/user/image");
+    }
 
     fs.rmSync("./views/user/"+req.cookies.user+"/"+req.body.title+".txt");
  
@@ -175,20 +212,48 @@ server.get("/openblog",(req,res)=>{
     }
 
     else{
-        var textcontent=fs.readFileSync("./views/user/"+req.cookies.user+"/"+req.query.filename+".txt");
-        textcontent="<h2>"+req.query.filename.replaceAll("+"," ")+"<br/></h2><p style='text-align:justify;word-break:break-all;'>"+textcontent+"</p>";
-    
-        var folders= fs.readdirSync("./views/user/");
-        var fileList=[];
 
-        for(var i=0;i<folders.length;i++){
-            const files=fs.readdirSync("./views/user/"+folders[i].toString());
-            fileList[i]=new Array(files.length);
-            for(var j=0;j<files.length;j++){
-                fileList[i][j]=files[j].toString().slice(0,files[j].toString().length-4);
+        if(req.query.user===undefined){
+            var textcontent=fs.readFileSync("./views/user/"+req.cookies.user+"/"+req.query.filename+".txt");
+            if(fs.existsSync("./public/images/"+req.cookies.user+"/"+req.query.filename+".jpg")){    
+            textcontent="<h2>"+req.query.filename.replaceAll("+"," ")+"<br/></h2><div><img  style='float:left; height:200px;padding-top: 10px;padding-right: 10px;' src='"+"./images/"+req.cookies.user+"/"+req.query.filename+".jpg"+"'/><p style='text-align:justify;word-break:break-all;'>"+textcontent+"</p></div>";
             }
-        }
+            else
+            textcontent="<h2>"+req.query.filename.replaceAll("+"," ")+"<br/></h2><p style='text-align:justify;word-break:break-all;'>"+textcontent+"</p>";
+    
+            var folders= fs.readdirSync("./views/user/");
+            var fileList=[];
 
-        res.render("read.ejs",{user: req.cookies.user, blog: textcontent, fileLists:fileList});
+            for(var i=0;i<folders.length;i++){
+                const files=fs.readdirSync("./views/user/"+folders[i].toString());
+                fileList[i]=new Array(files.length);
+                for(var j=0;j<files.length;j++){
+                    fileList[i][j]=files[j].toString().slice(0,files[j].toString().length-4);
+                }
+            }
+
+            res.render("read.ejs",{user: req.cookies.user, blog: textcontent, fileLists:fileList});
+        }else{
+
+            var folders= fs.readdirSync("./views/user/");
+            var fileList=[];
+            var textcontent=fs.readFileSync("./views/user/"+folders[req.query.user]+"/"+req.query.filename+".txt");
+            
+            if(fs.existsSync("./public/images/"+folders[req.query.user]+"/"+req.query.filename+".jpg")){    
+                textcontent="<h2>"+req.query.filename.replaceAll("+"," ")+"<br/></h2><div><img style='float:left; height:200px;padding-top: 10px;padding-right: 10px;' src='"+"./images/"+folders[req.query.user]+"/"+req.query.filename+".jpg"+"'/><p style='text-align:justify;word-break:break-all;'>"+textcontent+"</p></div>";
+                }
+                else
+                textcontent="<h2>"+req.query.filename.replaceAll("+"," ")+"<br/></h2><p style='text-align:justify;word-break:break-all;'>"+textcontent+"</p>";
+        
+            for(var i=0;i<folders.length;i++){
+                const files=fs.readdirSync("./views/user/"+folders[i].toString());
+                fileList[i]=new Array(files.length);
+                for(var j=0;j<files.length;j++){
+                    fileList[i][j]=files[j].toString().slice(0,files[j].toString().length-4);
+                }
+            }
+
+            res.render("read.ejs",{user: req.cookies.user, blog: textcontent, fileLists:fileList});
+        }
     }
 });

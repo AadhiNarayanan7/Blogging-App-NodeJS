@@ -154,13 +154,16 @@
 
   <div ></div>
   <div style="background-color: #EBF4F6;align-self: stretch;">
-    <form method="post" action="/save" onsubmit="return validatetitle()">
+    <form method="post" action="/save" onsubmit="return validatetitle()" enctype="multipart/form-data">
       <div style="display: flex;flex-direction: column;padding-left:60px;padding-right: 60px;padding-top:20px">
         <div style="height: 20px;"></div>
         <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Blog Title</label>
-        <input type="hidden" name="user" value="<%= user %>">
         <input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Title">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Upload Image</label>
+          <input type="file" class="form-control" id="imageID" name="image" placeholder="Image Url">
         </div>
         <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Content</label>
